@@ -12,16 +12,12 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <stdio.h>
-#include <conio.h>
 #include <vector>
-#include <time.h>
 #include <glm/glm/common.hpp>
 #include <Windows.h>
-#include "function.h"
+#include "loadOBJ.h"
 
 using namespace std;
-
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
