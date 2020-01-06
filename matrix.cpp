@@ -49,7 +49,7 @@ void Matrix::cameraMatrix() {
 	MatrixID = glGetUniformLocation(programID, "projection");
 	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &Projection[0][0]);
 
-	glm::mat4 View = glm::lookAt(glm::vec3(0, 0, 2.0), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));   //eye, at, up
+	glm::mat4 View = glm::lookAt(glm::vec3(-1, 1.5, 2.0), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));   //eye, at, up
 	MatrixID = glGetUniformLocation(programID, "viewTransform");
 	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &View[0][0]);
 }
