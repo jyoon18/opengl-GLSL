@@ -143,7 +143,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="draw.cpp" />
     <ClCompile Include="loadOBJ.cpp" />
     <ClCompile Include="loadShader.cpp" />
     <ClCompile Include="main.cpp" />
@@ -156,7 +155,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="draw.h" />
+    <ClInclude Include="declaration.h" />
     <ClInclude Include="loadShader.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="object.h">

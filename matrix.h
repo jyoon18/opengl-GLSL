@@ -16,6 +16,7 @@ class Matrix {
 	glm::mat4 tr = glm::mat4(1.0f);
 	glm::mat4 tx = glm::mat4(1.0f);
 	glm::mat4 rz = glm::mat4(1.0f);
+	glm::mat4 translate = glm::mat4(1.0f);
 	glm::mat4 scalematrix = glm::mat4(1.0f);
 
 	float nutLeftXpos, nutRightXpos;
@@ -23,7 +24,7 @@ class Matrix {
 	float nutZrotLeft, nutZrotRight = 0.0;
 	float nutXpos{ 0.0 }, boltZpos{ 0.0 };
 public:
-	GLuint programID, MatrixID;
+	GLuint programID, MatrixID, objColorID;
 	int ranNum;
 
 	struct kVal {

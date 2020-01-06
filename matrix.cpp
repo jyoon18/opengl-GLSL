@@ -17,6 +17,7 @@ void Matrix::boltMatrix() {
 	tx = glm::mat4(1.0f);
 	scalematrix = glm::mat4(1.0f);
 	tr = glm::mat4(1.0f);
+	rz = glm::mat4(1.0f);
 
 	tx = glm::translate(tx, glm::vec3(-30.0f, 45.0f, boltZpos + 105.0f));
 
@@ -27,19 +28,19 @@ void Matrix::boltMatrix() {
 
 
 	if (bolt.keyVal == 1) {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 0.5, 0.1, 1.0);
 	}
 	else if (bolt.keyVal == 2) {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 0.6, 1.0, 0.2);
 	}
 	else if (bolt.keyVal == 3) {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 1.0, 0.2, 0);
 	}
 	else {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 1.0, 0.7, 0.0);
 	}
 }
@@ -58,32 +59,34 @@ void Matrix::launcherMatrix() {
 	tx = glm::mat4(1.0f);
 	scalematrix = glm::mat4(1.0f);
 	rz = glm::mat4(1.0f);
+	translate = glm::mat4(1.0f);
 	tr = glm::mat4(1.0f);
 
 	rz = glm::rotate(rz, glm::radians(180.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	rz = glm::rotate(rz, glm::radians(180.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 	tx = glm::translate(tx, glm::vec3(-20.0f, 10.0f, 150.0f));
 	scalematrix = glm::scale(scalematrix, glm::vec3(0.7f, 0.7f, 0.7f));
-	tr = tx * scalematrix * tx * rz;
+	tr = tx * scalematrix * translate * rz;
 	MatrixID = glGetUniformLocation(programID, "MVP");
 	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, glm::value_ptr(tr));
 
-	GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+	objColorID = glGetUniformLocation(programID, "objectColor");
 	glUniform3f(objColorID, 1.0f, 1.0f, 0.9f);
 }
 
 void Matrix::mapMatrix() {
 	tx = glm::mat4(1.0f);
 	scalematrix = glm::mat4(1.0f);
+	translate = glm::mat4(1.0f);
 	tr = glm::mat4(1.0f);
 
 	tx = glm::translate(tx, glm::vec3(-30.0f, 0.0f, 0.0f));
 	scalematrix = glm::scale(scalematrix, glm::vec3(0.7f, 0.7f, 0.7f));
-	tr = tx * scalematrix;
+	tr = tx * scalematrix * translate;
 	MatrixID = glGetUniformLocation(programID, "MVP");
 	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, glm::value_ptr(tr));
 
-	GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+	objColorID = glGetUniformLocation(programID, "objectColor");
 	glUniform3f(objColorID, 0.0f, 0.4f, 0.1f);
 }
 
@@ -102,19 +105,19 @@ void Matrix::nutMatrixLeft() {
 	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, glm::value_ptr(tr));
 
 	if (ranNum == 1) {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 0.5, 0.1, 1.0);
 	}
 	else if (ranNum == 2) {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 0.6, 1.0, 0.2);
 	}
 	else if (ranNum == 3) {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 1.0, 0.2, 0);
 	}
 	else {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 1.0, 0.7, 0.0);
 	}
 }
@@ -133,19 +136,19 @@ void Matrix::nutMatrixRight() {
 	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, glm::value_ptr(tr));
 
 	if (ranNum == 1) {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 0.5, 0.1, 1.0);
 	}
 	else if (ranNum == 2) {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 0.6, 1.0, 0.2);
 	}
 	else if (ranNum == 3) {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 1.0, 0.2, 0);
 	}
 	else {
-		GLuint objColorID = glGetUniformLocation(programID, "objectColor");
+		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 1.0, 0.7, 0.0);
 	}
 }
