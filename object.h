@@ -30,7 +30,6 @@ float nutXpos{ 0.0 }, boltZpos{ 0.0 };
 
 void TimerFunction(int value);
 void keyboard(unsigned char key, int x, int y);
-void display();
 GLuint LoadShaders(const char * vertex_file_path, const char * fragment_file_path);
 void cameraMatrix();
 
