@@ -19,3 +19,6 @@ void draw(std::vector< glm::vec3 > vertices);
 void del();
 void keyboard(unsigned char key, int x, int y);
 void mouseMotion(int button, int state, int x, int y);
+void init();
+void TimerFunction(int value);
+void getRandom();

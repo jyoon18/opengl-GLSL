@@ -13,11 +13,24 @@
 #include <Windows.h>
 #include "matrix.h"
 
+
+void Matrix::cameraMatrix() {
+	glm::mat4 Projection = glm::ortho(-100.0, 100.0, -100.0, 100.0, -200.0, 200.0);
+	MatrixID = glGetUniformLocation(programID, "projection");
+	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &Projection[0][0]);
+
+	glm::mat4 View = glm::lookAt(glm::vec3(-1, 1.5, 2.0), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));   //eye, at, up
+	MatrixID = glGetUniformLocation(programID, "viewTransform");
+	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &View[0][0]);
+}
+
+
 void Matrix::boltMatrix() {
 	tx = glm::mat4(1.0f);
 	scalematrix = glm::mat4(1.0f);
 	tr = glm::mat4(1.0f);
-	rz = glm::mat4(1.0f);
+	// rz = glm::mat4(1.0f);
+	translate = glm::mat4(1.0f);
 
 	tx = glm::translate(tx, glm::vec3(-30.0f, 45.0f, boltZpos + 105.0f));
 
@@ -25,7 +38,6 @@ void Matrix::boltMatrix() {
 	tr = tx * scalematrix;
 	MatrixID = glGetUniformLocation(programID, "MVP");
 	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, glm::value_ptr(tr));
-
 
 	if (bolt.keyVal == 1) {
 		objColorID = glGetUniformLocation(programID, "objectColor");
@@ -43,16 +55,6 @@ void Matrix::boltMatrix() {
 		objColorID = glGetUniformLocation(programID, "objectColor");
 		glUniform3f(objColorID, 1.0, 0.7, 0.0);
 	}
-}
-
-void Matrix::cameraMatrix() {
-	glm::mat4 Projection = glm::ortho(-100.0, 100.0, -100.0, 100.0, -200.0, 200.0);
-	MatrixID = glGetUniformLocation(programID, "projection");
-	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &Projection[0][0]);
-
-	glm::mat4 View = glm::lookAt(glm::vec3(-1, 1.5, 2.0), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));   //eye, at, up
-	MatrixID = glGetUniformLocation(programID, "viewTransform");
-	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &View[0][0]);
 }
 
 void Matrix::launcherMatrix() {
@@ -95,6 +97,7 @@ void Matrix::nutMatrixLeft() {
 	scalematrix = glm::mat4(1.0f);
 	rz = glm::mat4(1.0f);
 	tr = glm::mat4(1.0f);
+	translate = glm::mat4(1.0f);
 
 	tx = glm::translate(tx, glm::vec3(-60.0 + nutXpos, 45.0f, 35.0f));
 	rz = glm::rotate(rz, glm::radians(nutZrotLeft), glm::vec3(0.0, 0.0, 1.0));
@@ -127,6 +130,7 @@ void Matrix::nutMatrixRight() {
 	scalematrix = glm::mat4(1.0f);
 	rz = glm::mat4(1.0f);
 	tr = glm::mat4(1.0f);
+	translate = glm::mat4(1.0f);
 
 	tx = glm::translate(tx, glm::vec3(0.0 - nutXpos, 45.0f, 35.0f));
 	rz = glm::rotate(rz, glm::radians(nutZrotRight), glm::vec3(0.0, 0.0, 1.0));

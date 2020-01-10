@@ -19,13 +19,14 @@ class Matrix {
 	glm::mat4 translate = glm::mat4(1.0f);
 	glm::mat4 scalematrix = glm::mat4(1.0f);
 
+public:
+	GLuint programID, MatrixID, objColorID;
+
+	int ranNum;
+	float nutXpos{ 0.0 }, boltZpos{ 0.0 };
 	float nutLeftXpos, nutRightXpos;
 	int zrotDirLeft{ 0 }, zrotDirRight{ 0 };
 	float nutZrotLeft, nutZrotRight = 0.0;
-	float nutXpos{ 0.0 }, boltZpos{ 0.0 };
-public:
-	GLuint programID, MatrixID, objColorID;
-	int ranNum;
 
 	struct kVal {
 		int keyVal;
